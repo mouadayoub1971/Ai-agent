@@ -1,6 +1,6 @@
 "use client"
 import { Authenticated } from "convex/react";
-import Header from "../../../components/Header";
+import Header from "../../components/Header";
 
 
 export default function DashboardLayout({
@@ -11,8 +11,9 @@ export default function DashboardLayout({
    {/** side bar componecnt */}
    <div>side bar</div>
   </Authenticated>
-  <div className=" flex-1">
+  <div className=" flex-1  ">
  <Header />
+
   <main>
   {children}
   </main>
