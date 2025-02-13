@@ -2,6 +2,7 @@
 import { Authenticated } from "convex/react";
 import Header from "../../components/Header";
 import { NavigationProvider } from "@/lib/NavigationProvider";
+import Sidebar from "@/components/Sidebar";
 
 
 export default function DashboardLayout({
@@ -11,9 +12,9 @@ export default function DashboardLayout({
   <NavigationProvider> 
   <div className="flex h-screen">
   <Authenticated>
-   {/** side bar componecnt */}
-   <div>side bar</div>
-  </Authenticated>
+   {/** side bar component */}
+    <Sidebar />
+    </Authenticated>
   <div className=" flex-1  ">
  <Header />
 
