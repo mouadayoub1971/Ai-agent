@@ -1,17 +1,15 @@
-import { NavigationContext } from "@/lib/NavigationProvider"
+"use client"
+import { NavigationContext, useNavigation } from "@/lib/NavigationProvider"
 import { cn } from "@/lib/utils"
 import { use } from "react"
 import { Button } from "./ui/button"
 import { PlusIcon } from "lucide-react"
 
 export default function Sidebar() {
- const { closeMobileNav, isMobileNavOpen} = use(NavigationContext)
+ const { isMobileNavOpen, closeMobileNav} = useNavigation()
  return (
   <>
-   {isMobileNavOpen && (
-    <div className="" onClick={closeMobileNav} />
-  )}
-
+  
 <div
         className={cn(
           "fixed md:inset-y-0 top-14 bottom-0 left-0 z-50 w-72 bg-gray-50/80 backdrop-blur-xl border-r border-gray-200/50 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:top-0 flex flex-col",

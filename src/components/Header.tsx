@@ -1,3 +1,4 @@
+"use client"
 import { Button } from "@/components/ui/button";
 import { NavigationContext } from "@/lib/NavigationProvider";
 import { UserButton } from "@clerk/nextjs";
@@ -18,7 +19,7 @@ export default function Header() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setIsMobileNavOpen(true)}
+            onClick={() => setIsMobileNavOpen(!isMobileNavOpen)}
             className="md:hidden text-gray-500 hover:text-gray-700 hover:bg-gray-100/50"
           >
             <HamburgerMenuIcon className="h-5 w-5" />
