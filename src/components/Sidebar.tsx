@@ -6,10 +6,15 @@ import { Button } from "./ui/button"
 import { PlusIcon } from "lucide-react"
 
 export default function Sidebar() {
- const { isMobileNavOpen, closeMobileNav} = useNavigation()
+ const { isMobileNavOpen, closeMobileNav} = use(NavigationContext)
  return (
   <>
-  
+  {isMobileNavOpen && (
+        <div
+          className="fixed inset-0 bg-black/20 z-40 md:hidden"
+          onClick={closeMobileNav}
+        />
+      )}
 <div
         className={cn(
           "fixed md:inset-y-0 top-14 bottom-0 left-0 z-50 w-72 bg-gray-50/80 backdrop-blur-xl border-r border-gray-200/50 transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:top-0 flex flex-col",
