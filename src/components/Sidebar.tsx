@@ -4,16 +4,23 @@ import { cn } from "@/lib/utils"
 import { use } from "react"
 import { Button } from "./ui/button"
 import { PlusIcon } from "lucide-react"
-import { useMutation } from "convex/react"
+import { useMutation, useQuery } from "convex/react"
 import { api } from "../../convex/_generated/api"
 import { useRouter } from "next/navigation"
+import { Id } from "../../convex/_generated/dataModel"
 
 export default function Sidebar() {
   const router = useRouter()
   const { isMobileNavOpen, closeMobileNav } = use(NavigationContext)
 
   const createChat = useMutation(api.chats.createChat)
+  const deleteChat = useMutation(api.chats.deleteChat)
+  const chats  = useQuery(api.chats.listChats)
   
+
+  const handleDeleteChat = async (id : Id<"chats">) => {
+     await deleteChat({id})
+  }
   const handleNewChat = async () => {
     const chatId = await createChat({ title: "New chat" })
     router.push(`/dashboard/chat/${chatId}`)
@@ -43,9 +50,9 @@ export default function Sidebar() {
         </div>
 
         <div className="flex-1 overflow-y-auto space-y-2.5 p-4 scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
-          {/*chats?.map((chat) => (
+          {chats?.map((chat) => (
             <ChatRow key={chat._id} chat={chat} onDelete={handleDeleteChat} />
-          ))*/}
+          ))}
         </div>
       </div>
   </>
