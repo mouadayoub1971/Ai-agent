@@ -19,7 +19,7 @@ export default function DashboardLayout({
  <Header />
 
   <main>
-  {children}
+           {children}
   </main>
   </div>
  </div>
