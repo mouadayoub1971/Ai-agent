@@ -46,7 +46,7 @@ export default function Sidebar() {
             onClick={handleNewChat}
             className="w-full bg-white hover:bg-gray-50 text-gray-700 border border-gray-200/50 shadow-sm hover:shadow transition-all duration-200"
           >
-            <PlusIcon className="mr-2 h-4 w-4" /> New Chat
+            <PlusIcon className="mr-2 h-4 w-4" /> New Chat booy
           </Button>
         </div>
 
