@@ -2,8 +2,8 @@ import { auth } from "@clerk/nextjs/server";
 import { Id } from "../../../../../convex/_generated/dataModel";
 import { redirect } from "next/navigation";
 import { getConvexClient } from "@/lib/convex";
-import { api } from "../../../../../convex/_generated/api";
-
+import { api } from "../../../../../convex/_generated/api"; 
+import ChatInterface from "@/components/InterfaceChat";
 
 interface chatPageProps {
  params: {
@@ -27,7 +27,7 @@ export default async function ChatPage({ params }: chatPageProps) {
   
   return (
     <div>
-      <chatInterface chatId={chatId} messagesList={messagesList}></chatInterface>
+      <ChatInterface chatId={chatId} messageList={messagesList}></ChatInterface>
   </div>
   );
   } catch (error) {
