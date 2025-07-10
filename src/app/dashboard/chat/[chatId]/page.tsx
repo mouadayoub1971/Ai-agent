@@ -22,10 +22,17 @@ export default async function ChatPage({ params }: chatPageProps) {
 
 
   const convex = getConvexClient()
+  try {
   const messagesList = await convex.query(api.messages.list, { chatId });
   
   return (
-    <div className="">Chat Id  {chatId}</div>
+    <div>
+      <chatInterface chatId={chatId} messagesList={messagesList}></chatInterface>
+  </div>
   );
+  } catch (error) {
+    console.log("an error in chat id ", error);
+    redirect("/dashboard")
+  }
 }
 
