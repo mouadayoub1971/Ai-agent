@@ -62,7 +62,9 @@ export default function InterfaceChat({chatId, messageList} : ChatInterfaceProps
    if(!response.ok) throw new  Error( await response.text())
    if(!response.body) throw new  Error("No body exist ")
   } catch (error) {
-   
+   console.log("an error appear ", error)
+   setMessages((prev) => prev.filter((msg) => msg._id !== optimisticUserMessage._id))
+   setStreamResponse("error")
   }
 
  }
