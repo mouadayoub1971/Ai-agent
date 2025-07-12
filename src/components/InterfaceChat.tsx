@@ -22,7 +22,7 @@ export default function InterfaceChat({chatId, messageList} : ChatInterfaceProps
 
  useEffect(() => {
   messageEndRef.current?.scrollIntoView({behavior : "smooth"})
- }, [messageList, messageEndRef])
+ }, [messages, messageEndRef])
 
  const handleSubmit = async (e : React.FormEvent) => {
   e.preventDefault()
