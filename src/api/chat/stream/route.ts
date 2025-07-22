@@ -33,8 +33,8 @@ export async function POST(req: Request) {
    },
   });
 
-  const startSteam = async () => {
-   try {
+  (async () => {
+     try {
     await sendSEEMessage(writer, { type: StreamMessageType.Connected });
     await context.mutation(api.messages.send, {
      chatId,
@@ -106,8 +106,8 @@ export async function POST(req: Request) {
           console.error("Error closing writer:", closeError);
         }
       }
-  };
-  return       ;
+  })()
+  return response;
  } catch (error) {
   console.error("Error in chat API:", error);
     return NextResponse.json(
