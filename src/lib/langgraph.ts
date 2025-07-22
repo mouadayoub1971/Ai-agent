@@ -1,9 +1,9 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import wxflows from "@wxflows/sdk/langchain"
 import { ToolNode } from "@langchain/langgraph/prebuilt";
-import { END, MessagesAnnotation, START, StateGraph } from "@langchain/langgraph"
+import { END, MemorySaver, MessagesAnnotation, START, StateGraph } from "@langchain/langgraph"
 import  SYSTEM_MESSAGE from "../constants/systemMessage"
-import { AIMessage, BaseMessage, SystemMessage, trimMessages } from "@langchain/core/messages";
+import { AIMessage, BaseMessage, HumanMessage, SystemMessage, trimMessages } from "@langchain/core/messages";
 import { ChatPromptTemplate, MessagesPlaceholder } from "@langchain/core/prompts"
  
 const toolClient = new wxflows({
@@ -102,12 +102,34 @@ function addCachingHeaders(messages: BaseMessage[]) : BaseMessage[] {
 
 
   let humanCount = 0;
-  for (let i = cachedMessage.length - 1; i>=0 ; i--)
-
+  for (let i = cachedMessage.length - 1; i >= 0; i--){
+    if (cachedMessage[i] instanceof HumanMessage) {
+      humanCount++;
+    if (humanCount === 2) {
+      addCache(cachedMessage[i]);
+      break;
+      }
+    }
+      
+  }
+  return cachedMessage;
 
 }
 
 
-export function submitQuestion(messages: BaseMessage[], chatId: string) {
+export async function submitQuestion(messages: BaseMessage[], chatId: string) {
   const cachedMessages = addCachingHeaders(messages);
+  const checkpointer = new MemorySaver();
+  const workFlow = createWorkflow();
+  const app = workFlow.compile({ checkpointer });
+  const stream = await app.streamEvents(
+    { messages: cachedMessages },
+  {
+    version: "v2",
+    configurable: { thread_id: chatId },
+    streamMode: "messages",
+    runId: chatId,
+    }
+  );
+  return stream;
  }
