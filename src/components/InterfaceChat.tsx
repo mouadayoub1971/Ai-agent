@@ -99,7 +99,7 @@ export default function InterfaceChat({chatId, messageList} : ChatInterfaceProps
     chatId : chatId
    }
 
-   const response = await fetch("api/chat/stream", {
+   const response = await fetch("/api/chat/stream", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body : JSON.stringify(messageRequest)
@@ -187,7 +187,7 @@ export default function InterfaceChat({chatId, messageList} : ChatInterfaceProps
                 content: fullResponse,
                 role: "assistant",
               });
-
+                console.log("this is the full response " , fullResponse)
               setMessages((prev) => [...prev, assistantMessage]);
               setStreamResponse("");
               return;

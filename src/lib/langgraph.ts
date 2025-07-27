@@ -41,7 +41,7 @@ const initialModel = () => {
     handleLLMEnd: async (output) => {
      console.log("the end of the llm call ")
     }
-   }
+  }
   ]
  }).bindTools(tools)
  return model;
@@ -72,7 +72,7 @@ const createWorkflow = () => {
    }) ,
    new MessagesPlaceholder("messages")
   ])
-   const trimmedMessages = trimmer.invoke(state.messages);
+   const trimmedMessages =await  trimmer.invoke(state.messages);
    const prompt = await promptTemplate.invoke({ messages: trimmedMessages });
    const response = await model.invoke(prompt);
    return { messages: [response] };

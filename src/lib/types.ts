@@ -68,4 +68,11 @@ export type StreamMessage =
  | ConnectedMessage
  | DoneMessage
  | ToolStartMessage
- | ToolEndMessage;
+  | ToolEndMessage;
+ 
+
+export interface ChatRequestBody {
+  messages: Message[];
+  newMessage: string;
+  chatId: Id<"chats">;
+}
