@@ -1,4 +1,5 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
+import { ChatOpenAI } from "@langchain/openai"
 import wxflows from "@wxflows/sdk/langchain"
 import { ToolNode } from "@langchain/langgraph/prebuilt";
 import { END, MemorySaver, MessagesAnnotation, START, StateGraph } from "@langchain/langgraph"
@@ -16,7 +17,7 @@ const toolNode = new ToolNode(tools)
 
 
 const trimmer = trimMessages({
-  maxTokens: 10,
+  maxTokens: 150000,
   strategy: "last",
   tokenCounter: (msgs) => msgs.length,
   includeSystem: true,
@@ -27,23 +28,16 @@ const trimmer = trimMessages({
 
 
 const initialModel = () => {
- const model = new ChatGoogleGenerativeAI({
-  model : "gemini-2.0-flash",
-  apiKey: process.env.GEMENI_API_KEY,
-  temperature : 0.7,
-  maxOutputTokens: 4096,
-  streaming: true,
-  callbacks: [
-   {
-    handleLLMStart: async () => {
-     console.log("the llm start calling")
-    },
-    handleLLMEnd: async (output) => {
-     console.log("the end of the llm call ")
+  const model = new ChatOpenAI({
+   model: 'openai/gpt-5-mini',
+    temperature: 0.8,
+    streaming: true,
+    apiKey: process.env.OPENAI_API_KEY,
+     maxTokens: 8000, 
+    configuration: {
+      baseURL: 'https://openrouter.ai/api/v1',
     }
-  }
-  ]
- }).bindTools(tools)
+  }).bindTools(tools);
  return model;
 }
 
