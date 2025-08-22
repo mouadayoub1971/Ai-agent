@@ -4,6 +4,9 @@ import { use } from "react";
 import { NavigationContext } from "@/lib/NavigationProvider";
 import { Button } from "./ui/button";
 import { TrashIcon } from "@radix-ui/react-icons";
+import { api } from "../../convex/_generated/api";
+import { useQuery } from "convex/react";
+import TimeAgo from "react-timeago"
 export default function ChatRow({
  chat,
  onDelete,
@@ -13,6 +16,9 @@ export default function ChatRow({
   }) {
   const router = useRouter();
   const {closeMobileNav} = use(NavigationContext);
+  const lastMessage = useQuery(api.messages.getLastMessage, {
+    chatId : chat._id,
+  })
   const handleClick = () => {
     router.push(`/dashboard/chat/${chat._id}`);
     closeMobileNav();
@@ -31,12 +37,12 @@ export default function ChatRow({
         </div>
 
         
-        {/*
+        
           {lastMessage && (
           <p className="text-xs text-gray-400 mt-1.5 font-medium">
-            <TimeAgo date={lastMessage.createdAt} />
+            <TimeAgo date={lastMessage.createAt} />
           </p>
-        )} */ }
+        )} 
       </div>
     </div>
   )
