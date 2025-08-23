@@ -95,15 +95,12 @@ export async function POST(req: Request) {
     
     // Let's debug all possible ways to access the content
     console.log('🔍 Debugging token structure:');
-    console.log('  - token.kwargs:', token.kwargs);
-    console.log('  - token.kwargs?.content:', token.kwargs?.content);
     console.log('  - token.content:', token.content);
-    console.log('  - event.data:', JSON.stringify(event.data, null, 2));
     
     // Try different access patterns
-    let text = null;
+    let text = token.content;
     
-    if (token.kwargs && token.kwargs.content !== undefined) {
+    /* if (token.kwargs && token.kwargs.content !== undefined) {
       text = token.kwargs.content;
       console.log('✅ Found content via token.kwargs.content:', text);
     } else if (token.content !== undefined) {
@@ -118,7 +115,7 @@ export async function POST(req: Request) {
       if (token.kwargs) {
         console.log('  - Available kwargs keys:', Object.keys(token.kwargs));
       }
-    }
+    } */
     
     console.log('📝 Final extracted text:', text);
     console.log('📝 Text type:', typeof text);

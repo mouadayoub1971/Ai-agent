@@ -27,7 +27,16 @@ export default function ChatRow({
     <div className="group rounded-xl border border-gray-200/30 bg-white/50 backdrop-blur-sm hover:bg-white/80 transition-all duration-200 cursor-pointer shadow-sm hover:shadow-md " onClick={handleClick} >
       <div className="p-4  ">
         <div className="flex justify-between items-center">
-          <p >chatRow</p>
+          <p className="text-sm text-gray-600 truncate flex-1 font-medium">
+            {lastMessage ? (
+              <>
+                {lastMessage.role === "user" ? "You: " : "AI: "}
+                {lastMessage.content.replace(/\\n/g, "\n")}
+              </>
+            ) : (
+              <span className="text-gray-400">New conversation</span>
+            )}
+          </p>
           <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100 -mr-2 -mt-0 ml-2 transition-opacity duration-200" onClick={(e) => {
             e.stopPropagation();
             onDelete(chat._id);
