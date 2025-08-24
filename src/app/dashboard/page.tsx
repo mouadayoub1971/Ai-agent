@@ -3,42 +3,35 @@ import { BotIcon } from "lucide-react";
 
 function Dashboard() {
  return (
-  <div className="flex-1 flex items-center justify-center p-4">
-      <div className="relative max-w-2xl w-full">
-        {/* Decorative elements */}
-        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-gray-100 to-gray-50/50 rounded-3xl"></div>
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#f5f5f5_1px,transparent_1px),linear-gradient(to_bottom,#f5f5f5_1px,transparent_1px)] bg-[size:4rem_4rem] rounded-3xl"></div>
+<div className="flex flex-col items-center justify-center h-full mt-10">
+   <div className="bg-[#2b2a29] rounded-2xl shadow-lg ring-1 ring-inset ring-[#2b2a29]/40 px-8 py-8 max-w-2xl w-full mx-6">
+    <div className="flex flex-col items-center gap-4">
+     <div className="inline-flex items-center justify-center rounded-full bg-[#262624] p-3 shadow-sm">
+      <BotIcon className="h-6 w-6 text-[#c2c0b6]" />
+     </div>
+     <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#c2c0b6]">Welcome to the AI Agent Chat</h2>
+     <p className="text-center text-sm sm:text-base text-[#bfbda8] max-w-lg">
+      Start a new conversation or select an existing chat from the sidebar. Your AI assistant is ready to help with any
+      task.
+     </p>
 
-        <div className="relative space-y-6 p-8 text-center">
-          <div className="bg-white/60 backdrop-blur-sm shadow-sm ring-1 ring-gray-200/50 rounded-2xl p-6 space-y-4">
-            <div className="bg-gradient-to-b from-gray-50 to-white rounded-xl p-4 inline-flex">
-              <BotIcon className="w-12 h-12 text-gray-600" />
-            </div>
-            <h2 className="text-2xl font-semibold bg-gradient-to-br from-gray-900 to-gray-600 bg-clip-text text-transparent">
-              Welcome to the AI Agent Chat
-            </h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              Start a new conversation or select an existing chat from the
-              sidebar. Your AI assistant is ready to help with any task.
-            </p>
-            <div className="pt-2 flex justify-center gap-4 text-sm text-gray-500">
-              <div className="flex items-center gap-1.5">
-                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
-                Real-time responses
-              </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-2 h-2 rounded-full bg-green-500"></div>
-                Smart assistance
-              </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-2 h-2 rounded-full bg-purple-500"></div>
-                Powerful tools
-              </div>
-            </div>
-          </div>
-        </div>
+     <div className="mt-3 flex items-center gap-6 text-sm text-[#bfbda8]">
+      <div className="flex items-center gap-2">
+       <span className="h-2 w-2 rounded-full bg-[#d97757] inline-block" />
+       <span className="text-[#c2b8b6]">Real-time responses</span>
       </div>
+      <div className="flex items-center gap-2">
+       <span className="h-2 w-2 rounded-full bg-[#be6a4e] inline-block opacity-60" />
+       <span className="text-[#c2c0b6]">Smart assistance</span>
+      </div>
+      <div className="flex items-center gap-2">
+       <span className="h-2 w-2 rounded-full bg-[#bfbda8] inline-block opacity-60" />
+       <span className="text-[#c2c0b6]">Powerful tools</span>
+      </div>
+     </div>
     </div>
+   </div>
+  </div>
  )
 }
 
