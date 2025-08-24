@@ -10,7 +10,7 @@ export default function DashboardLayout({
 }: Readonly<{ children: React.ReactNode; }>){
  return (
   <NavigationProvider> 
-  <div className="flex h-screen">
+  <div className="flex h-screen bg-[#262624]">
   <Authenticated>
    {/** side bar component */}
     <Sidebar />
