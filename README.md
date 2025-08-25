@@ -4,6 +4,13 @@
 ## DevSecOps CI/CD Pipeline - Security-First Deployment Architecture
 
 ## 🎯 Pipeline Overview
+![alt text](ci2.drawio.png)
+![alt text](<Screenshot 2025-08-23 130705.png>)
+![alt text](<Screenshot 2025-08-23 132127.png>)
+![alt text](<Screenshot 2025-08-23 135837.png>)
+![alt text](<Screenshot 2025-08-23 140414.png>)
+![alt text](<Screenshot 2025-08-23 140904.png>)
+![alt text](<Screenshot 2025-08-11 100353.png>)
 
 This DevSecOps pipeline implements a **security-first, automated deployment strategy** that ensures every code commit goes through rigorous security checks before reaching production. Built around Jenkins orchestration with integrated security scanning at multiple stages, this pipeline guarantees that security vulnerabilities are caught early and resolved before deployment.
 
