@@ -345,15 +345,6 @@ The frontend leverages the latest web technologies to deliver a premium user exp
 The AI orchestration layer represents the core intelligence of the system:
 
 
-
-const stateGraph = new StateGraph<AIState>()
-  .addNode("processMessage", processUserMessage)
-  .addNode("toolExecution", executeTools)
-  .addNode("generateResponse", generateAIResponse)
-  .addConditionalEdges("processMessage", shouldUseTool)
-  .compile();
-```
-
 **Advanced Features:**
 - **Prompt Caching** reduces API costs by up to 60%
 - **Context Window Management** maintains optimal 4096 token usage
@@ -387,8 +378,6 @@ MCP represents a revolutionary approach to connecting AI models with external se
 - **Selective Tool Invocation** based on relevance scoring
 - **Batch Processing** for multiple tool calls
 
-
-
 **2. API Security:**
 - **Input Validation** using Zod schemas
 - **Rate Limiting** per user and endpoint
@@ -402,9 +391,6 @@ MCP represents a revolutionary approach to connecting AI models with external se
 - **Key Rotation** for API credentials
 
 
-
-
-
 **2. Error Tracking:**
 - **Structured Logging** with correlation IDs
 - **Error Aggregation** by error type and frequency
@@ -416,8 +402,9 @@ MCP represents a revolutionary approach to connecting AI models with external se
 - **Cost Optimization** (token usage, API calls)
 - **Feature Adoption** (MCP server usage, tool preferences)
 - **User Satisfaction** (response times, error rates)
+ 
 
---------------
+
 ## 🤖 Alfredo AI Agent - DevSecOps Pipeline Architecture
 
 ## 🎯 Project Overview
@@ -443,67 +430,6 @@ Alfredo is not just another chatbot - it's an intelligent assistant that seamles
 - **Multi-Modal Integration**: Connects various data sources to provide comprehensive assistance
 - **Enterprise Security**: Built with security-first principles for business environments
 
-## 🏗️ System Architecture Overview
-
-```
-┌────────────────────────────────────────────────────────────────────────────┐
-│                              ALFREDO AI AGENT                              │
-├────────────────────────────────────────────────────────────────────────────┤
-│                                                                            │
-│  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐  │
-│  │   Next.js   │    │    Clerk    │    │   Convex    │    │  LangChain  │  │
-│  │  Frontend   │◄──►│    Auth     │◄──►│ Database    │◄──►│    Core     │  │
-│  │  (React 19) │    │  Security   │    │ Real-time   │    │ Orchestratio│  │
-│  └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘  │
-│           │                                                       │        │
-│           │          ┌─────────────┐    ┌─────────────┐           │        │
-│           └─────────►│   OpenRouter│    │   WxFlows   │◄──────────┘        │
-│                      │ Models      │    │ Integration │                    │
-│                      │   (LLM)     │    │   Tools     │                    │
-│                      └─────────────┘    └─────────────┘                    │
-│                               │                                            │
-│                               ▼                                            │
-│                    ┌─────────────────────────┐                             │
-│                    │    MCP SERVERS          │                             │
-│                    │  ┌─────────────────┐    │                             │
-│                    │  │  Gmail Server   │    │                             │
-│                    │  │ • Send emails   │    │                             │
-│                    │  │ • Read inbox    │    │                             │
-│                    │  │ • Draft assist  │    │                             │
-│                    │  └─────────────────┘    │                             │
-│                    │  ┌─────────────────┐    │                             │
-│                    │  │  Drive Server   │    │                             │
-│                    │  │ • Store CVs     │    │                             │
-│                    │  │ • Manage docs   │    │                             │
-│                    │  │ • Analyze files │    │                             │
-│                    │  └─────────────────┘    │                             │
-│                    └─────────────────────────┘                             │
-└────────────────────────────────────────────────────────────────────────────┘
-                                       │
-                                       ▼
-┌─────────────────────────────────────────────────────────────────────────────┐
-│                         DEVSECOPS PIPELINE                                  │
-├─────────────────────────────────────────────────────────────────────────────┤
-│                                                                             │
-│  GitHub → Jenkins → Security Scans → Docker → Kubernetes → Monitoring       │
-│                                                                             │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐              │
-│  │  Code Quality   │  │ Container Sec   │  │  Deployment     │              │
-│  │ • SonarQube     │  │ • Trivy Scans   │  │ • Amazon EKS    │              │
-│  │ • OWASP Check   │  │ • Nexus Repo    │  │ • Terraform     │              │
-│  │ • Dependency    │  │ • Image Sign    │  │ • Load Balancer │              │
-│  │   Cruiser       │  │ • Registry      │  │ • Auto Scaling  │              │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘              │
-│                                                                             │
-│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐              │
-│  │   Monitoring    │  │  Observability  │  │   Domain Mgmt   │              │
-│  │ • Prometheus    │  │ • Grafana       │  │ • Namecheap     │              │
-│  │ • Metrics       │  │ • Dashboards    │  │ • SSL/TLS       │              │
-│  │ • Alerts        │  │ • Logging       │  │ • CDN           │              │
-│  │ • Health Checks │  │ • Tracing       │  │ • DNS           │              │
-│  └─────────────────┘  └─────────────────┘  └─────────────────┘              │
-└─────────────────────────────────────────────────────────────────────────────┘
-```
 
 ## 🔄 DevSecOps Pipeline Journey
 
