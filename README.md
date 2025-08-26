@@ -276,7 +276,7 @@ This DevSecOps pipeline ensures that security is not an afterthought but a funda
 
 ## Executive Summary
 
-This article explores the architecture of a sophisticated AI Assistant application that combines modern web technologies with advanced AI orchestration and enterprise-grade security. Built on Next.js 15 and powered by LangChain with Claude 3.5 Sonnet, the system features revolutionary MCP (Model Context Protocol) integration for Gmail and Google Drive, all deployed through a comprehensive DevSecOps pipeline.
+This article explores the architecture of a sophisticated AI Assistant application that combines modern web technologies with advanced AI orchestration and enterprise-grade security. Built on Next.js 15 and powered by LangChain with ChatGpt 5 Sonnet, the system features revolutionary MCP (Model Context Protocol) integration for Gmail and Google Drive, all deployed through a comprehensive DevSecOps pipeline.
 
 ## 🎯 System Architecture Overview
 
